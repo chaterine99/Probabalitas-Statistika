@@ -1,0 +1,250 @@
+---
+title: "'Tingkat Depresi Mahasiswa Pada Kegiatan Belajar Mengajar Akibat Pandemi. (Studi"
+Kasus : Mahasiswa Universitas Multimedia Nusantara)'
+author: Chaterine Cristianti, Fakhri Faiz, Santoso, Sektiara Herdarnisari, Resza Aditya
+  Pratama
+output:
+  word_document: default
+  html_document: default
+---
+```{r, include = FALSE}
+## Import data dari excel ke RStudio
+library(readxl)
+langkah_1 <- read_excel("data_kuesioner_kel5.xlsx", sheet = "Hasil Akhir 2")
+
+## show dataset
+print(str(langkah_1))
+
+## Menyimpan nilai
+library(RColorBrewer)
+color_plot1 <- brewer.pal(3, "Accent")
+color_plot2 <- brewer.pal(3, "Set2")
+color_plot3 <- brewer.pal(3, "Set3")
+color_plot4 <- brewer.pal(3, "Paired")
+color_plot5 <- brewer.pal(3, "Set3")
+user.testJENIS_KELAMIN <- table(langkah_1$STRESS, langkah_1$JENIS_KELAMIN)
+user.testPROGRAM_STUDI <- table(langkah_1$STRESS, langkah_1$PROGRAM_STUDI)
+user.testSKS <- table(langkah_1$STRESS, langkah_1$SKS)
+user.testKELUAR_RUMAH <- table(langkah_1$STRESS, langkah_1$KELUAR_RUMAH)
+user.testNILAI_TURUN <- table(langkah_1$STRESS, langkah_1$NILAI_TURUN)
+```
+
+# 1. Pendahuluan
+  &emsp;Perkembangan yang spektakuler di bidang teknologi informasi dan komunikasi membuat dinamika sosial masyarakat saat ini mengalami perubahan pesat. Hal yang menonjol dalam perkembangan teknologi informasi dan komunikasi saat ini adalah banyaknya aplikasi video call yang dapat dilakukan di mana saja dan kapan saja dengan mudah, contohnya adalah aplikasi Google Meet, Zoom, dll (Risanty dkk, 2017). Diharapkan dengan adanya aplikasi video call tersebut, dapat mempermudah pengguna dalam melakukan kegiatan sehari-hari seperti kegiatan belajar mengajar terutama pada masa pandemi COVID-19 (Corona Virus Disease 2019).\
+  &emsp;Virus COVID-19 menular dengan sangat cepat ke hampir semua negara, termasuk Indonesia, sehingga harus dilakukan Pembatasan Sosial Berskala Besar (PSBB) yang menyebabkan kegiatan belajar mengajar harus dilakukan secara daring agar mengurangi resiko terjadinya penularan. Akibat diterapkan nya peraturan PSBB, mahasiswa harus melakukan kegiatan belajar mengajar dilakukan di rumah masing-masing selama beberapa bulan yang dapat menyebabkan mahasiswa menjadi depresi.\
+	&emsp;Sebagian besar orang berpikir dan beranggapan bahwa stress dan depresi, bukanlah benar-benar suatu gangguan mental dan dapat hilang dengan sendirinya. Sebenarnya depresi adalah gangguan yang lebih dari sekadar perubahan emosi sementara. Depresi bukanlah kondisi yang bisa diubah dengan cepat atau secara langsung (Dirgayunita, 2016). Depresi adalah sindroma klinik yang ditandai dengan suatu perasaan sedih, susah yang biasanya disertai dengan diperlambatnya gerak dan fungsi tubuh (Arista, 2007).\
+	&emsp;Berdasarkan pernyataan diatas, penelitian ini dilakukan untuk mengetahui gambaran umum banyaknya kasus depresi yang  dialami oleh mahasiswa Universitas Multimedia Nusantara selama masa pandemi COVID-19.
+
+  
+# 2. Desain Penelitian dan Hipotesis
+Kelompok kami melakukan penelitian mengenai Tingkat Depresi selama proses belajar mengajar yang dialami oleh mahasiswa khususnya mahasiswa Universitas Multimedia Nusantara (UMN). Penelitian ini kami lakukan untuk mengetahui bagaimana pengaruh pandemi yang disebabkan oleh covid-19 yang mempengaruhi metode pembelajaran perkuliahan khususnya secara mental mahasiswa. Kami meneliti dengan membandingkan hipotesa yang kami buat dengan data hasil survey secara langsung.
+
+#### 2.1 Tipe Data
+Tipe data kategorikal (Kualitatif)
+Skala pengukuran : \
+* Nominal 	: Nama, Gender, Fakultas, program studi, jumlah sks\
+* Ordinal	: Nilai yang didapatkan selama kuliah daring
+
+#### 2.2 Metode Pengumpulan Data/Metode Sampling
+* Menggunakan kuesioner yang dibuat dengan google form
+*	Prosedur : kuesioner akan dibagikan kepada mahasiswa UMN
+
+#### 2.3 Hipotesis
+$H_0$ : Tidak adanya hubungan antara tingkat depresi mahasiswa selama kuliah daring dengan jenis kelamin\
+$H_a$ : Adanya hubungan antara tingkat depresi mahasiswa selama kuliah daring dengan jenis kelamin
+
+$H_0$ : Tidak ada hubungan antara tingkat depresi mahasiswa selama kuliah daring dengan program studi\
+$H_a$ : Terdapat hubungan antara tingkat depresi mahasiswa selama kuliah daring dengan program studi.
+
+$H_0$ : Tidak ada hubungan antara depresi mahasiswa selama kuliah daring dengan jumlah sks yang diambil\
+$H_a$ : Adanya hubungan antara depresi mahasiswa selama kuliah daring dengan jumlah sks yang diambil
+
+$H_0$ : Tidak ada hubungan antara tingkat depresi mahasiswa selama kuliah daring dengan keinginan untuk keluar rumah\
+$H_a$ : Adanya hubungan antara tingkat depresi mahasiswa selama kuliah daring dengan keinginan untuk keluar rumah
+
+$H_0$ : Tidak ada hubungan antara tingkat depresi mahasiswa selama kuliah daring dengan nilai yang didapatkan selama masa pandemi\
+$H_a$ : Adanya hubungan antara tingkat depresi mahasiswa selama kuliah daring dengan nilai yang didapatkan selama masa pandemi
+
+# 3. Analisis Data
+
+#### 3.1 Dasar Teori
+Uji chi square ( χ2 ) merupakan metode pengujian yang biasa digunakan untuk membandingkan frekuensi sampel dengan frekuensi yang diharapkan berdasarkan pada hipotesis suatu data. Uji Chi square disebut juga sebagai uji proporsi dua kasus atau lebih dimana data bersifat diskrit
+
+$$X^2 = \sum\frac{(f_o-f_e)^2}{f_e}$$
+#### Statistika Deskriptif
+
+* Hipotesis 1
+```
+Membandingkan ada atau tidaknya hubungan antara tingkat depresi mahasiswa selama perkuliahan online dengan jenis kelamin
+Rumus yang digunakan : Chi-square
+
+```
+* Hipotesis 2
+```
+Membandingkan ada atau tidaknya hubungan antara antara tingkat depresi mahasiswa selama kuliah daring dengan program studi.
+Rumus yang digunakan : Chi-square
+
+```
+* Hipotesis 3
+```
+Membandingkan ada atau tidaknya hubungan antara antara tingkat depresi mahasiswa selama kuliah daring dengan jumlah sks.
+Rumus yang digunakan : Chi-square
+```
+* Hipotesis 4
+```
+Membandingkan ada atau tidaknya hubungan antara tingkat depresi mahasiswa selama kuliah daring dengan nilai yang didapatkan selama masa pandemi.
+Rumus yang digunakan : Chi-square
+
+```
+* Hipotesis 5
+```
+Membandingkan ada atau tidaknya hubungan antara tingkat depresi mahasiswa selama kuliah daring dengan keinginan untuk keluar rumah
+Rumus yang digunakan : Chi-square
+
+```
+
+#### 3.2 Statistika Deskriptif
+* Tabel Tingkat STRESS dan Jenis Kelamin
+```{r, echo = FALSE}
+print(user.testJENIS_KELAMIN)
+```
+* Tabel Tingkat STRESS dan FAKULTAS
+```{r, echo = FALSE}
+print(user.testPROGRAM_STUDI)
+```
+* Tabel Tingkat STRESS dan SKS
+```{r, echo = FALSE}
+print(user.testSKS)
+```
+* Tabel Tingkat STRESS dan KELUAR_RUMAH
+```{r, echo = FALSE}
+print(user.testKELUAR_RUMAH)
+```
+* Tabel Tingkat STRESS dan NILAI_TURUN
+```{r, echo = FALSE}
+print(user.testNILAI_TURUN)
+```
+#### 3.3 Hasil Uji Hipotesa
+* Hasil Uji Hipotesa Tingkat STRESS dengan Jenis Kelamin
+```{r, echo = FALSE}
+print(chisq.test(user.testJENIS_KELAMIN))
+## chi-square results
+```
+* Hasil Uji Hipotesa Tingkat STRESS dengan FAKULTAS
+```{r, echo = FALSE}
+print(chisq.test(user.testPROGRAM_STUDI))
+## chi-square results
+```
+* Hasil Uji Hipotesa Tingkat STRESS dengan SKS
+```{r, echo = FALSE}
+print(chisq.test(user.testSKS))
+## chi-square results
+```
+* Hasil Uji Hipotesa Tingkat STRESS dengan KELUAR_RUMAH
+```{r, echo = FALSE}
+print(chisq.test(user.testKELUAR_RUMAH))
+## chi-square results
+```
+* Hasil Uji Hipotesa Tingkat STRESS dengan NILAI_TURUN
+```{r, echo = FALSE}
+print(chisq.test(user.testNILAI_TURUN))
+## chi-square results
+```
+# 4. Pembahasan dan Ringkasan 
+
+# 5. Daftar Pustaka
+* dataanalytics. (n.d.). Legends on graphs and charts. Retrieved from https://www.dataanalytics.org.uk/legends-on-graphs-and-charts/.
+
+* r-graph-gallery. (n.d.). Basic R barplot customization
+https://www.r-graph-gallery.com/209-the-options-of-barplot.html
+
+# 6. Lampiran
+#### 6.1 Kuisioner
+[Link Google Forms](https://docs.google.com/forms/d/1Pfj5lfYJ2MAl6HJQvh5IIpGK2IeqIdRqd9lhzL8ZbgU/edit)
+
+#### 6.2 Data
+Data didapatkan dari penyebaran pertanyaan melalui google form dan kemudian diolah di microsoft excel dengan nama hasil akhir data_kuesioner_kel5.xlsx
+
+#### 6.3 Grafik
+1. Grafik Tingkat STRESS dengan Jenis Kelamin 
+```{r, echo = FALSE}
+barplot(user.testJENIS_KELAMIN, legend = TRUE, args.legend = list(bty = "n",x = "topright"), xlab = "Gender", ylab = "Stress", main = "Perbandingan antara variabel Stress dengan Gender", beside = TRUE, col = color_plot1)
+```
+2. Grafik Tingkat STRESS dengan FAKULTAS 
+```{r, echo = FALSE}
+barplot(user.testPROGRAM_STUDI, legend = TRUE, args.legend = list(bty = "n", x = "top"), xlab = "Program Studi", ylab = "Stress", main = "Perbandingan antara variabel Stress dengan Program Studi", beside = TRUE, col = color_plot2)
+```
+3. Grafik Tingkat STRESS dengan SKS 
+```{r, echo = FALSE}
+barplot(user.testSKS, legend = TRUE, args.legend = list(bty = "n", x = "top"), xlab = "Jumlah SKS", ylab = "Stress", main = "Perbandingan antara variabel Stress dengan SKS yang diambil", beside = TRUE, col = color_plot3)
+```
+
+4. Grafik Tingkat STRESS dengan KELUAR_RUMAH 
+```{r, echo = FALSE}
+barplot(user.testKELUAR_RUMAH, legend = TRUE, args.legend = list(bty = "n", x = "topright"), xlab = "Keluar Rumah", ylab = "Stress", main = "Perbandingan antara variabel Stress dengan ingin keluar Rumah", beside = TRUE, col = color_plot4)
+```
+
+5. Grafik Tingkat STRESS dengan NILAI_TURUN 
+```{r, echo = FALSE}
+barplot(user.testNILAI_TURUN, legend = TRUE, args.legend = list(bty = "n", x = "topright"), xlab = "Nilai Turun", ylab = "Stress", main = "Perbandingan antara variabel Stress dengan Nilai Turun", beside = TRUE, col = color_plot5)
+```
+
+
+#### 6.4 Source Code
+```
+## Import data dari excel ke RStudio
+library(readxl)
+langkah_1 <- read_excel("data_kuesioner_kel5.xlsx", sheet = "Hasil Akhir")
+
+## Menyimpan nilai 
+user.testJENIS_KELAMIN <- table(langkah_1$STRESS, langkah_1$JENIS_KELAMIN)
+user.testPROGRAM_STUDI <- table(langkah_1$STRESS, langkah_1$PROGRAM_STUDI)
+user.testSKS <- table(langkah_1$STRESS, langkah_1$SKS)
+user.testKELUAR_RUMAH <- table(langkah_1$STRESS, langkah_1$KELUAR_RUMAH)
+user.testNILAI_TURUN <- table(langkah_1$STRESS, langkah_1$NILAI_TURUN)
+
+## Cetak Tabel Tingkat STRESS dan Jenis Kelamin
+print(user.testJENIS_KELAMIN)
+
+## Cetak Tabel Tingkat STRESS dan FAKULTAS
+print(user.testPROGRAM_STUDI)
+
+## Cetak Tabel Tingkat STRESS dan SKS
+print(user.testSKS)
+
+## Cetak Tabel Tingkat STRESS dan KELUAR_RUMAH
+print(user.testKELUAR_RUMAH)
+
+## Cetak Tabel Tingkat STRESS dan NILAI_TURUN
+print(user.testNILAI_TURUN)
+
+## Cetak Hasil Uji Hipotesa Tingkat STRESS dengan Jenis Kelamin
+print(chisq.test(user.testJENIS_KELAMIN))
+
+## Cetak Hasil Uji Hipotesa Tingkat STRESS dengan FAKULTAS
+print(chisq.test(user.testPROGRAM_STUDI))
+
+## Cetak Hasil Uji Hipotesa Tingkat STRESS dengan SKS
+print(chisq.test(user.testSKS))
+
+## Cetak Hasil Uji Hipotesa Tingkat STRESS dengan KELUAR_RUMAH
+print(chisq.test(user.testKELUAR_RUMAH))
+
+## Cetak Hasil Uji Hipotesa Tingkat STRESS dengan NILAI_TURUN
+print(chisq.test(user.testNILAI_TURUN))
+
+## Cetak Grafik Tingkat STRESS dengan Jenis Kelamin 
+barplot(user.testJENIS_KELAMIN, legend = TRUE, args.legend = list(bty = "n",x = "topright"), xlab = "Gender", ylab = "Stress", main = "Perbandingan antara variabel Stress dengan Gender", beside = TRUE)
+
+## Cetak Grafik Tingkat STRESS dengan FAKULTAS 
+barplot(user.testPROGRAM_STUDI, legend = TRUE, args.legend = list(bty = "n", x = "top"), xlab = "Program Studi", ylab = "Stress", main = "Perbandingan antara variabel Stress dengan Program Studi", beside = TRUE)
+
+## Cetak Grafik Tingkat STRESS dengan SKS 
+barplot(user.testSKS, legend = TRUE, args.legend = list(bty = "n", x = "top"), xlab = "Jumlah SKS", ylab = "Stress", main = "Perbandingan antara variabel Stress dengan SKS", beside = TRUE)
+
+## Cetak Grafik Tingkat STRESS dengan KELUAR_RUMAH 
+barplot(user.testSKS, legend = TRUE, args.legend = list(bty = "n", x = "top"), xlab = "Keluar Rumah", ylab = "Stress", main = "Perbandingan antara variabel Stress dengan Rumah", beside = TRUE)
+
+## Cetak Grafik Tingkat STRESS dengan NILAI_TURUN 
+barplot(user.testSKS, legend = TRUE, args.legend = list(bty = "n", x = "top"), xlab = "Nilai Turun", ylab = "Stress", main = "Perbandingan antara variabel Stress dengan Nilai", beside = TRUE)
+```
